@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profit Prediction</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        
+    </head>
+
+    <body>
+        <div class="main-block">
+            
+        <form action="{{ url_for('predict') }}" method="post">
+            <h1>Profit Prediction</h1>
+
+            <div class="info">
+                <input type="text" name="R&D_Spend" placeholder="Percent R&D Spend" required="required"><br>
+                <input type="text" name="Administration" placeholder="Percent Administration" required="required"><br>
+                <input type="text" name="Marketing_Spend" placeholder="Percent Marketing Spend" required="required"><br>
+            </div>
+
+
+            <button type="submit">Predict Profit</button>
+            <h2>{{ prediction_text }}</h2>
+
+        </form>
+        </div>
+
+        
+        
+
+    </body>
+</html>
