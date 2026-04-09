@@ -1,55 +1,86 @@
-html, body {
-    min-height: 100%;
-    padding: 0;
-    margin: 0;
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 14px;
-    color: #666;
+/* Muji-Inspired Zen Aesthetic */
+:root {
+    --bg-color: #fdfcfb;
+    --text-color: #333333;
+    --border-color: #e0dbd1;
+    --accent-color: #7f786d; /* Soft earth tone */
 }
 
-h1 {
-    margin: 0 0 20px;
-    font-weight: 400;
-    color: #1c87c9;
-}
-
-p {
-    margin: 0 0 5px;
-}
-.main-block {
+body {
+    background-color: var(--bg-color);
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-image: url("money.jpg");
-}
-form {
-    padding: 25px;
-    margin: 25px;
-    box-shadow: 0 2px 5px #f5f5f5;
-    background: #f5f5f5;
+    height: 100vh;
+    margin: 0;
 }
 
-input, textarea {
-    width: calc(100% - 18px);
-    padding: 8px;
+.main-block {
+    background: white;
+    padding: 40px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.main-block-insight {
+    background: white;
+    padding: 40px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+
+h1 {
+    font-weight: 300;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.info input {
+    width: 100%;
+    padding: 12px 0;
     margin-bottom: 20px;
-    border: 1px solid #1c87c9;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    background: transparent;
     outline: none;
+    font-size: 0.9rem;
+    transition: border-color 0.3s;
 }
 
-input::placeholder {
-    color: #666;
+.info input:focus {
+    border-bottom: 1px solid var(--accent-color);
 }
 
 button {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
+    background-color: var(--accent-color);
+    color: white;
     border: none;
-    background: #1c87c9;
-    font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: opacity 0.3s;
 }
 
+button:hover {
+    opacity: 0.8;
+}
+
+h2 {
+    margin-top: 30px;
+    font-weight: 400;
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--accent-color);
+}

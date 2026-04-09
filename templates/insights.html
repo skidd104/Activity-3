@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProfitPilot | Data Insights</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="insights-body">
+    <div class="main-block-insight wide">
+        <h1>Data Analysis Insights</h1>
+        
+        <div class="insight-content">
+            <img src="{{ url_for('static', filename='images/heatmap.png') }}" alt="Correlation Heatmap" style="width:100%;">
+            
+            <div class="explanation">
+                <p>Darker green squares indicate a <strong>strong positive correlation</strong>. For example, as R&D Spend increases, Profit tends to increase significantly.</p>
+                <p>Values close to 0 suggest no meaningful relationship between those two categories.</p>
+            </div>
+        </div>
+
+        <a href="/" class="back-link">← Back to Predictor</a>
+    </div>
+</body>
+</html>

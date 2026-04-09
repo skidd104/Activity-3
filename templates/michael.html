@@ -1,34 +1,61 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Profit Prediction</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-        
-    </head>
+<html lang="en">
 
-    <body>
-        <div class="main-block">
-            
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfitPilot | Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="main-block">
         <form action="{{ url_for('predict') }}" method="post">
             <h1>Profit Prediction</h1>
 
             <div class="info">
-                <input type="text" name="R&D_Spend" placeholder="Percent R&D Spend" required="required"><br>
-                <input type="text" name="Administration" placeholder="Percent Administration" required="required"><br>
-                <input type="text" name="Marketing_Spend" placeholder="Percent Marketing Spend" required="required"><br>
+                <input type="number" step="any" name="R&D_Spend" placeholder="R&D Investment ($)" required>
+                <input type="number" step="any" name="Administration" placeholder="Administration Cost ($)" required>
+                <input type="number" step="any" name="Marketing_Spend" placeholder="Marketing Spend ($)" required>
             </div>
 
+            <button type="submit">Run Analysis</button>
 
-            <button type="submit">Predict Profit</button>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="{{ url_for('insights') }}"
+                    style="color: #7f786d; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.5px;">VIEW DATA
+                    INSIGHTS →</a>
+            </div>
+
+            {% if prediction_text %}
             <h2>{{ prediction_text }}</h2>
-
+            {% endif %}
         </form>
+
+        <div class="retrain-section" style="margin-top: 40px; border-top: 1px solid #e0dbd1; padding-top: 20px;">
+            <h3 style="font-weight: 300; font-size: 1rem; color: #7f786d;">Model Selection:</h3>
+            <p style="font-weight: 300; font-size: 1rem; color: #7f786d;">Make sure the column field of your datasets is the same with the sample csv in files_training folder</p>
+            <form action="/retrain" method="post" enctype="multipart/form-data">
+
+                <label style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Choose Algorithm:</label>
+                <select name="algorithm"
+                    style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #e0dbd1; background: transparent;">
+                    <option value="linear">Linear Regression (Simple)</option>
+                    <option value="random_forest">Random Forest (Complex/Robust)</option>
+                    <option value="decision_tree">Decision Tree (Fast)</option>
+                </select>
+
+                <input type="file" name="database_file" accept=".csv" required
+                    style="font-size: 0.7rem; margin-bottom: 10px;">
+                <button type="submit">
+                    Retrain & Update
+                </button>
+            </form>
         </div>
 
-        
-        
 
-    </body>
+    </div>
+</body>
+
 </html>
